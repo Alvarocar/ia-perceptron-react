@@ -1,0 +1,238 @@
+$core-radio: 150px;
+$sigma-radio: calc($core-radio - 50px);
+$activation-function-radio: calc($core-radio - 50px);
+
+$primary-outline: 5px solid #212121;
+
+$arrow: polygon(100% 20%, 100% 80%, 30% 80%, 30% 100%, 0% 50%, 30% 0%, 30% 20%);
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@mixin pseudo-element($radio: 20px, $content: "") {
+  content: $content;
+  display: block;
+  width: $radio;
+  height: $radio;
+}
+
+@mixin position-zero {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin center-absulute {
+  @include position-zero();
+  margin: auto;
+}
+
+.perceptron {
+  width: 1000px;
+  height: 500px;
+  margin: 4rem auto 0;
+  position: relative;
+  &__core {
+    position: absolute;
+    width: $core-radio;
+    height: $core-radio;
+    @include center-absulute();
+    display: grid;
+    place-content: center;
+    background: #fff;
+    border-radius: 50%;
+    outline: 5px solid #212121;
+    &::after {
+      @include pseudo-element($sigma-radio);
+      left: 0;
+      background-image: url("https://static.vecteezy.com/system/resources/previews/005/155/279/non_2x/sigma-greek-symbol-capital-letter-uppercase-font-icon-black-color-illustration-flat-style-image-vector.jpg");
+      background-size: contain;
+    }
+  }
+
+  &__activation-function {
+    position: absolute;
+    outline: 5px solid #212121;
+    width: $activation-function-radio;
+    height: $activation-function-radio;
+    background-color: #fff;
+    @include position-zero();
+    margin: auto 0;
+    left: inherit;
+    right: 280px;
+    display: grid;
+    &::before {
+      $lenght: 40px;
+
+      @include pseudo-element(15px);
+      background: #212121;
+      margin: auto 0;
+      width: $lenght;
+      transform: translate(-$lenght);
+    }
+    &::after {
+      $lenght: 100px;
+      @include pseudo-element(35px);
+      background-color: #212121;
+      position: absolute;
+      width: $lenght;
+      @include position-zero();
+      margin: auto 0;
+      left: inherit;
+      transform: translate($lenght);
+      clip-path: polygon(
+        0% 28.57%,
+        0% calc(28.57% + 42.86%),
+        80% calc(28.57% + 42.86%),
+        80% 100%,
+        100% 50%,
+        80% 0%,
+        80% 28.57%
+      );
+    }
+  }
+
+  &__b {
+    position: absolute;
+    @include position-zero();
+    @include pseudo-element(50px);
+    background: #fff;
+    top: inherit;
+    margin: 0 auto;
+    bottom: 90px;
+    outline: 5px solid #212121;
+    &::before {
+      @include pseudo-element(20px);
+      background-color: #212121;
+      width: 35px;
+      margin: 0 auto;
+      transform: rotateZ(90deg) translateX(-28px);
+      clip-path: polygon(
+        100% 20%,
+        100% 80%,
+        30% 80%,
+        30% 100%,
+        0% 50%,
+        30% 0%,
+        30% 20%
+      );
+    }
+  }
+
+  &__dendrite {
+    position: absolute;
+    left: 100px;
+    width: 350px;
+    height: 120px;
+    background: transparent;
+    $space: 40px;
+    &--1 {
+      top: $space;
+    }
+    &--2 {
+      top: calc($space * 5);
+    }
+  }
+
+  &__w {
+    position: absolute;
+    background: #fff;
+    $x-radio: 100px;
+    @include pseudo-element($x-radio);
+    right: 80px;
+    display: grid;
+    border-radius: 50%;
+    place-content: center;
+    outline: $primary-outline;
+    &::after {
+      @include pseudo-element(25px);
+      position: absolute;
+      outline: $primary-outline;
+      outline-width: 2px;
+      border-radius: 50%;
+      padding: 0.2rem;
+      background: #fff;
+      text-align: center;
+      display: grid;
+      text-transform: uppercase;
+      place-content: center;
+      bottom: 0;
+      right: 0;
+    }
+    &::before {
+      $width: 100px;
+      @include pseudo-element($width);
+      height: 25px;
+      position: absolute;
+      background: #212121;
+      right: -$width;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      clip-path: $arrow;
+      transform: scaleX(-1);
+    }
+    &--w1 {
+      &::after {
+        content: "w1";
+      }
+      &::before {
+        top: inherit;
+        transform: scaleX(-1) rotateZ(-45deg) translateY(45px);
+      }
+    }
+    &--w2 {
+      &::after {
+        content: "w2";
+      }
+      &::before {
+        width: 50px;
+        right: -50px;
+      }
+    }
+  }
+
+  &__x {
+    position: absolute;
+    background: #fff;
+    $x-radio: 100px;
+    @include pseudo-element($x-radio);
+    display: grid;
+    border-radius: 50%;
+    place-content: center;
+    outline: $primary-outline;
+    input {
+      width: calc(100% - 20px);
+      font-size: 2rem;
+      margin: 0 auto;
+      text-align: center;
+      border: none;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &::after {
+      $width: 70px;
+      @include pseudo-element($width);
+      height: 20px;
+      background: #212121;
+      position: absolute;
+      @include position-zero();
+      margin: auto 0;
+      left: inherit;
+      right: -$width;
+      clip-path: $arrow;
+      transform: scaleX(-1);
+    }
+  }
+}
