@@ -39,7 +39,7 @@ input[type="number"] {
 .perceptron {
   width: 1000px;
   height: 500px;
-  margin: 4rem auto 0;
+  margin: 6rem auto 0;
   position: relative;
   &__core {
     position: absolute;
@@ -64,7 +64,10 @@ input[type="number"] {
     outline: 5px solid #212121;
     width: $activation-function-radio;
     height: $activation-function-radio;
-    background-color: #fff;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4xrsnWdyKzp7P6EWt3tqemLxAABwPilw0yNMdJpCjR2Zwj0Q_2iAVYMHT4MJHpQJYA8E&usqp=CAU");
+    background-size: contain;
+    background-position: 25%;
+    background-repeat: no-repeat;
     @include position-zero();
     margin: auto 0;
     left: inherit;
@@ -110,6 +113,7 @@ input[type="number"] {
     margin: 0 auto;
     bottom: 90px;
     outline: 5px solid #212121;
+    text-align: center;
     &::before {
       @include pseudo-element(20px);
       background-color: #212121;
@@ -234,5 +238,78 @@ input[type="number"] {
       clip-path: $arrow;
       transform: scaleX(-1);
     }
+  }
+
+  &__y {
+    position: absolute;
+    right: 70px;
+    background: #fff;
+    top: 0;
+    bottom: 0;
+    outline: $primary-outline;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    font-size: 2em;
+    font-weight: 800;
+    height: $activation-function-radio;
+    width: $activation-function-radio;
+    margin: auto 0;
+  }
+
+  &__epochs {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    text-align: center;
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 600;
+    flex-direction: column;
+    gap: 1rem;
+    &::before {
+      content: "Ciclos tomados para aprender";
+      display: block;
+    }
+  }
+
+  &__form-train {
+    display: grid;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 300px;
+    margin: 0 auto;
+    row-gap: 1rem;
+    top: -70px;
+    label {
+      font-weight: 600;
+      display: flex;
+
+      .input {
+        width: 60%;
+      }
+    }
+    button[type="submit"] {
+      width: 80%;
+      margin: 0 auto;
+      padding: 0.5rem;
+      font-size: 1em;
+      border-radius: 10px;
+      border: 1px solid #212121;
+    }
+  }
+
+  &__submit {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding: 0.5rem;
+    font-size: 1em;
+    border-radius: 10px;
+    border: 1px solid #212121;
+    width: 150px;
   }
 }
