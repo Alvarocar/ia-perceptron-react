@@ -143,7 +143,13 @@ input[type="number"] {
       top: $space;
     }
     &--2 {
-      top: calc($space * 5);
+      top: calc($space * 4.5);
+    }
+    &--3 {
+      top: calc($space * 8);
+    }
+    &--4 {
+      top: calc($space * 11.5);
     }
   }
 
@@ -201,6 +207,16 @@ input[type="number"] {
       &::before {
         width: 50px;
         right: -50px;
+      }
+    }
+    &--w3 {
+      &::after {
+        content: "w3";
+      }
+    }
+    &--w4 {
+      &::after {
+        content: "w4";
       }
     }
   }

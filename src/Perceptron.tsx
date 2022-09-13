@@ -25,31 +25,34 @@ const Perceptron = () => {
   }, [setEpochs, setW])
 
   return (
-    <main className="perceptron">
-      <TrainForm onSubmit={handleTrain} />
-      <div className="perceptron__epochs">{epochs}</div>
-      <form onSubmit={handleSubmit(handleTest)}>
-        <div className="perceptron__dendrite perceptron__dendrite--1">
-          <div className="perceptron__x">
-            <input type="number" step="0.0000001" {...register("x1")} />
+    <>
+      <h1 style={{ textAlign: "center" }}>Compuerta AND</h1>
+      <main className="perceptron">
+        <TrainForm onSubmit={handleTrain} />
+        <div className="perceptron__epochs">{epochs}</div>
+        <form onSubmit={handleSubmit(handleTest)}>
+          <div className="perceptron__dendrite perceptron__dendrite--1">
+            <div className="perceptron__x">
+              <input type="number" step="0.0000001" {...register("x1")} />
+            </div>
+            <div className="perceptron__w perceptron__w--w1">{w[0] && w[0].toFixed(2)}</div>
           </div>
-          <div className="perceptron__w perceptron__w--w1">{w[0] && w[0].toFixed(2)}</div>
-        </div>
-        <div className="perceptron__dendrite perceptron__dendrite--2">
-          <div className="perceptron__x">
-            <input type="number" step="0.0000001" {...register("x2")} />
+          <div className="perceptron__dendrite perceptron__dendrite--2">
+            <div className="perceptron__x">
+              <input type="number" step="0.0000001" {...register("x2")} />
+            </div>
+            <div className="perceptron__w perceptron__w--w2">{w[1] && w[1].toFixed(2)}</div>
           </div>
-          <div className="perceptron__w perceptron__w--w2">{w[1] && w[1].toFixed(2)}</div>
-        </div>
 
-        <button className="perceptron__submit" type="submit">Ejecutar Prueba</button>
-      </form>
+          <button className="perceptron__submit" type="submit">Ejecutar Prueba</button>
+        </form>
 
-      <div className="perceptron__core"></div>
-      <div className="perceptron__activation-function"></div>
-      <div className="perceptron__b">{err && err.toFixed(2)}</div>
-      <div className="perceptron__y">{result}</div>
-    </main>
+        <div className="perceptron__core"></div>
+        <div className="perceptron__activation-function"></div>
+        <div className="perceptron__b">{err && err.toFixed(2)}</div>
+        <div className="perceptron__y">{result}</div>
+      </main>
+    </>
   )
 }
 

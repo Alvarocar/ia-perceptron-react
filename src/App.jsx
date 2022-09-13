@@ -1,10 +1,10 @@
 import Perceptron from './Perceptron'
+import Router from './router'
 
 function App() {
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>Compuerta AND</h1>
-      <Perceptron />
+      <Router />
     </>
   )
 }

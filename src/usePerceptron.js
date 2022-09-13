@@ -55,27 +55,27 @@ export const usePerceptron = ({
   }, [x])
 
   const ajust = useCallback((position) => {
-    const complement = 2*E*yInput[position]
+    const complement = 2 * E * yInput[position]
     const xSection = nj.array(x.tolist()[position]).multiply(complement)
     setW(w => w.add(xSection))
-    setErr(err => err + (complement*(-1)))
+    setErr(err => err + (complement * (-1)))
   }, [yInput, E, x, setW, setErr])
 
   const cycle = useCallback(() => activation(nj.tanh(x.dot(w).subtract(err))), [x, w, err])
 
   const evaluate = useCallback((yExp) => {
-      const list = yExp.tolist()
-      debugger
-      let learn = true
-      for (let i = 0; i < list.length; i++) {
-        if(list[i] !== yInput[i]) {
-          learn = false
-          ajust(i)
-          break
-        }
+    const list = yExp.tolist()
+    debugger
+    let learn = true
+    for (let i = 0; i < list.length; i++) {
+      if (list[i] !== yInput[i]) {
+        learn = false
+        ajust(i)
+        break
       }
-      return learn
-  },[yInput, ajust])
+    }
+    return learn
+  }, [yInput, ajust])
 
   const toTrain = useCallback((maxEpochs = 10) => {
     const yExp = cycle()
@@ -124,7 +124,7 @@ export class Core {
     const list = yExp.tolist()
     let learn = true
     for (let i = 0; i < list.length; i++) {
-      if(list[i] !== this.y[i]) {
+      if (list[i] !== this.y[i]) {
         learn = false
         this.#ajust(i)
         break
@@ -136,11 +136,11 @@ export class Core {
   /**
    * @param {number} position
    */
-  #ajust(position, list) {
-    const errAlpha = 2*this.E*this.y[position]
+  #ajust(position) {
+    const errAlpha = 2 * this.E * this.y[position]
     const xSection = nj.array(this.x.tolist()[position]).multiply(errAlpha)
     this.w = this.w.add(xSection)
-    this.err = this.err + (errAlpha*(-1))
+    this.err = this.err + (errAlpha * (-1))
   }
 
   /**
@@ -149,12 +149,12 @@ export class Core {
    */
   toTrain(ephos) {
     let i = 0
-    while(i < ephos) {
+    while (i < ephos) {
       const yExp = this.#cycle()
+      i++
       if (this.#eval(yExp)) {
         break
       }
-      i++
     }
     return i
   }
