@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import TrainForm from "../trainForm";
 import { Core } from "../usePerceptron";
 import { x as xInputs, y as yInputs } from "../util/get4Inputs";
-
+import "./_perceptron4.scss"
 const core = new Core(xInputs, yInputs);
 
 const Perceptron4 = () => {

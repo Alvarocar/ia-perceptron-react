@@ -1,0 +1,40 @@
+.perceptron-4-inputs {
+  .perceptron {
+    &__core {
+      margin-bottom: 8rem;
+    }
+    &__b {
+      bottom: 20px;
+    }
+    &__activation-function {
+      transform: translateY(50px);
+    }
+    &__y {
+      transform: translateY(50px);
+    }
+    &__submit {
+      transform: translateX(220px);
+    }
+    &__w {
+      &--w2 {
+        &::before {
+          width: 60px;
+          transform: scale(-1) rotateZ(35deg) translateY(-20px)
+            translateX(-20px);
+        }
+      }
+      &--w3 {
+        &::before {
+          width: 70px;
+          transform: scale(-1) rotateZ(-20deg) translate(24px, 30px);
+        }
+      }
+      &--w4 {
+        &::before {
+          width: 90px;
+          transform: scale(-1) rotateZ(-40deg) translate(-15px, 60px);
+        }
+      }
+    }
+  }
+}
